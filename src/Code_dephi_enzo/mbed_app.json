@@ -1,0 +1,11 @@
+{
+    "requires": [ "bare-metal", "rtos-api", "sd","filesystem","fat_chan"],
+    "target_overrides": {
+      "*": {
+        "target.printf_lib": "minimal-printf",
+        "platform.minimal-printf-enable-floating-point": true,
+        "platform.stdio-baud-rate": 115200,
+        "target.components_add": [ "SD" ]
+      }
+    }
+}
