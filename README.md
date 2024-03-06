@@ -1,73 +1,44 @@
-# Projet Expérimental de Contrôle de l'État de Polarisation
+# Gestion des états logiques des sorties digitales de l'EOM
 
 ## Introduction
 
-Ce projet expérimental vise à développer un module permettant de contrôler l'état de polarisation d'une fonction en sortie. L'objectif est d'offrir une solution robuste et précise pour manipuler l'état de polarisation dans diverses applications. Ce README fournit des informations essentielles pour comprendre, utiliser et contribuer au code développé dans le cadre de ce projet.
+Ce programme, intitulé "Gestion des états logiques des sorties digitales de l'EOM", a été développé par Enzo Sebiane. Il permet de gérer les états logiques des sorties digitales d'une carte Nucleo-L476RG avec microcontrôleur compatible Mbed. L'utilisateur peut choisir entre deux modes de fonctionnement : le Mode Manuel, où l'état logique est défini manuellement, et le Mode Aléatoire, où les états sont générés de manière aléatoire à intervalle régulier.
 
 ## Fonctionnalités
 
-- Contrôle précis de l'état de polarisation en sortie du module.
-- Intégration facile dans des systèmes existants.
-- Compatibilité avec différentes applications nécessitant une manipulation de l'état de polarisation.
+- **Mode Manuel :** L'utilisateur peut saisir le nom de l'état pour définir manuellement l'état logique des sorties digitales.
+- **Mode Aléatoire :** Les états logiques des sorties sont générés de manière aléatoire à intervalle régulier, défini par l'utilisateur.
 
-## Installation
+## Matériel requis
 
-1. Cloner le dépôt GitHub :
+- Carte Nucleo-L476RG avec microcontrôleur compatible Mbed.
+- (Ajoutez ici toute autre carte d'extension ou composant nécessaire)
 
-   ```bash
-   git clone https://github.com/votre-utilisateur/projet-polarisation.git
-   ```
+## Configuration des sorties digitales
 
-2. Accéder au répertoire du projet :
+Les sorties digitales sont configurées selon un tableau de correspondance entre les noms des états et les configurations des sorties. Voici quelques exemples d'états préconfigurés :
 
-   ```bash
-   cd projet-polarisation
-   ```
-
-3. Installer les dépendances requises :
-
-   ```bash
-   npm install  # ou yarn install
-   ```
+- **LVP :** {1, 0, 1, 0, 1, 0}
+- **LHP :** {1, 0, 1, 1, 1, 1}
+- **L. +45 :** {1, 0, 1, 0, 0, 0}
+- **L.-45 :** {1, 0, 1, 0, 1, 1}
+- **RCP :** {1, 1, 0, 1, 0, 1}
+- **LCP :** {0, 0, 0, 1, 0, 1}
 
 ## Utilisation
 
-1. Importer le module dans votre code :
+1. Au démarrage, le programme affiche un menu permettant à l'utilisateur de choisir entre le Mode Manuel (A) ou le Mode Aléatoire (B).
+2. En Mode Manuel, l'utilisateur peut saisir le nom de l'état (LVP, LHP, L. +45, L.-45, RCP, LCP) pour définir manuellement l'état logique des sorties digitales.
+3. En Mode Aléatoire, l'utilisateur doit spécifier la période de changement d'état en millisecondes. Les états seront générés de manière aléatoire à intervalle régulier.
 
-   ```javascript
-   const polarisation = require('projet-polarisation');
-   ```
+## Observations
 
-2. Initialiser le module avec les paramètres nécessaires :
+Les résultats peuvent être observés à l'aide du logiciel Tera Term via la console série.
 
-   ```javascript
-   const config = {
-     // Configuration spécifique au projet
-   };
+## Remarques
 
-   const polarisationModule = polarisation.initialize(config);
-   ```
+- La gestion des états logiques est basée sur un tableau de correspondance.
+- Le programme utilise la bibliothèque `<chrono>` pour gérer le temps.
+- Les résultats sont affichés via la console série.
 
-3. Utiliser les fonctions exposées par le module pour contrôler l'état de polarisation :
-
-   ```javascript
-   polarisationModule.setPolarization(angle);
-   ```
-
-   Remplacez `angle` par la valeur d'angle souhaitée pour l'état de polarisation.
-
-## Configuration
-
-Le module de contrôle de l'état de polarisation peut être configuré selon les besoins spécifiques du projet. Consultez le fichier de configuration (`config.js`) pour personnaliser les paramètres tels que la fréquence d'échantillonnage, les limites d'angle, etc.
-
-## Contributions
-
-Les contributions au projet sont les bienvenues. Assurez-vous de suivre les meilleures pratiques de développement, de créer des branches distinctes pour les fonctionnalités ou correctifs, et de soumettre des demandes de fusion (pull requests) informatives.
-
-## Licence
-
-Ce projet est sous licence [MIT](LICENSE), ce qui signifie que vous pouvez librement l'utiliser, le modifier et le distribuer conformément aux termes de cette licence.
-
----
-
-N'hésitez pas à explorer le code source et à expérimenter avec les fonctionnalités du module de contrôle de l'état de polarisation. Nous vous encourageons à contribuer et à améliorer ce projet expérimental.
+N'oubliez pas d'ajouter toute information supplémentaire pertinente à votre README et de tenir compte des éventuelles modifications ultérieures dans votre code.
