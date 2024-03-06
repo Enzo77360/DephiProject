@@ -41,4 +41,3 @@ Les résultats peuvent être observés à l'aide du logiciel Tera Term via la co
 - Le programme utilise la bibliothèque `<chrono>` pour gérer le temps.
 - Les résultats sont affichés via la console série.
 
-N'oubliez pas d'ajouter toute information supplémentaire pertinente à votre README et de tenir compte des éventuelles modifications ultérieures dans votre code.
